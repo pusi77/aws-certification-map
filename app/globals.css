@@ -1,0 +1,423 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   AWS Skill Builder-inspired light theme (Squid Ink navy, AWS orange, blue)
+   Forced for everyone so the design is stable regardless of OS preference.
+   --------------------------------------------------------------------------- */
+:root,
+:root:not(.light),
+.dark {
+  color-scheme: light;
+  --background: oklch(0.975 0.006 285); /* soft lavender-white */
+  --foreground: oklch(0.24 0.02 264); /* AWS Squid Ink navy */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.02 264);
+  --popover: oklch(0.22 0.02 264);
+  --popover-foreground: oklch(0.98 0.005 285);
+  --primary: oklch(0.72 0.16 58); /* AWS orange */
+  --primary-foreground: oklch(0.22 0.02 264);
+  --secondary: oklch(0.95 0.006 285);
+  --secondary-foreground: oklch(0.28 0.02 264);
+  --muted: oklch(0.95 0.006 285);
+  --muted-foreground: oklch(0.5 0.02 262);
+  --accent: oklch(0.55 0.15 252); /* AWS/Cloudscape blue */
+  --accent-foreground: oklch(0.98 0.005 285);
+  --destructive: oklch(0.56 0.2 27); /* AWS red for expired */
+  --border: oklch(0.9 0.008 285);
+  --input: oklch(0.9 0.008 285);
+  --ring: oklch(0.55 0.15 252);
+
+  /* Tier accent colors, tuned for contrast on white chips */
+  --gold: oklch(0.62 0.16 52); /* Professional */
+  --cyan: oklch(0.53 0.14 250); /* Associate (blue) */
+  --violet: oklch(0.48 0.19 300); /* Specialty */
+  --green: oklch(0.52 0.14 155); /* Active status */
+  --danger: oklch(0.55 0.2 27); /* Expired status */
+  --navy: oklch(0.24 0.02 264);
+}
+
+@theme inline {
+  --color-gold: var(--gold);
+  --color-cyan: var(--cyan);
+  --color-violet: var(--violet);
+  --color-green: var(--green);
+  --color-danger: var(--danger);
+  --color-navy: var(--navy);
+}
+
+/* Dark backdrop well behind an active badge so the holo effect stays vivid
+   against the otherwise light AWS page. */
+.badge-well {
+  background:
+    radial-gradient(120% 120% at 50% 0%, oklch(0.32 0.03 264), oklch(0.18 0.025 264) 70%);
+  border-radius: 0.75rem;
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
+}
+
+/* Neutral well for expired / not-yet-earned badges. */
+.badge-well-muted {
+  background: oklch(0.955 0.006 285);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Holographic badge effect (active certifications only)
+   --------------------------------------------------------------------------- */
+.holo-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  perspective: 700px;
+  /* pointer-driven vars, updated from JS */
+  --px: 50%;
+  --py: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  --o: 0;
+  outline: none;
+}
+
+.holo-rotator {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* No preserve-3d: Chrome skips mix-blend-mode for children inside a 3D
+     rendering context, which silently killed the holo effect. The tilt still
+     reads as 3D via the perspective on .holo-card. */
+  transform: rotateX(var(--ry)) rotateY(var(--rx)) scale(var(--scale, 1));
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+  isolation: isolate;
+}
+.holo-card:hover .holo-rotator,
+.holo-card:focus-visible .holo-rotator {
+  transition: transform 0.08s ease-out;
+}
+.holo-card:focus-visible {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.holo-badge-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgb(0 0 0 / 0.5));
+}
+
+.holo-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Effect layers are masked to the badge silhouette. Credly serves the artwork
+   with Access-Control-Allow-Origin: *, so the remote URL is a valid mask source. */
+.holo-foil,
+.holo-rainbow,
+.holo-glare {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: var(--img);
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: var(--img);
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  transition: opacity 0.4s ease;
+  will-change: opacity, background-position;
+}
+
+.holo-foil {
+  background-image: url("/assets/overlay.png");
+  background-size: 165% 165%;
+  background-position: var(--px) var(--py);
+  mix-blend-mode: color-dodge;
+  filter: brightness(1.05) contrast(1.45);
+  opacity: calc(var(--o) * 0.85);
+}
+
+.holo-rainbow {
+  background-image: repeating-linear-gradient(
+    115deg,
+    #ff2400 0%,
+    #e8b71d 12%,
+    #1de840 24%,
+    #1ddde8 36%,
+    #2b1de8 48%,
+    #dd00f3 60%,
+    #ff2400 72%
+  );
+  background-size: 220% 220%;
+  background-position: var(--px) var(--py);
+  mix-blend-mode: color-dodge;
+  filter: brightness(0.9) contrast(1.15) saturate(1.5);
+  opacity: calc(var(--o) * 0.55);
+}
+
+.holo-glare {
+  background: radial-gradient(
+    circle at var(--px) var(--py),
+    rgb(255 255 255 / 0.85),
+    rgb(255 255 255 / 0) 45%
+  );
+  mix-blend-mode: overlay;
+  opacity: calc(var(--o) * 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .holo-rotator {
+    transform: none !important;
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Confetti celebration (all certifications active)
+   --------------------------------------------------------------------------- */
+.confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -6vh;
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(var(--drift), 108vh, 0) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti {
+    display: none;
+  }
+}
+
+.confetti-pieces {
+  position: absolute;
+  inset: 0;
+}
+
+.confetti-message {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  z-index: 1;
+  width: min(calc(100% - 2rem), 34rem);
+  padding: 1rem 1.5rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 55%, white);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--navy) 92%, transparent);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.25), 0 0 2rem color-mix(in oklab, var(--primary) 35%, transparent);
+  color: var(--background);
+  font-size: clamp(1.1rem, 3vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-align: center;
+  transform: translateX(-50%);
+  animation: confetti-message 7s ease-in-out forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes confetti-message {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+  12% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  76% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.94);
+  }
+}
