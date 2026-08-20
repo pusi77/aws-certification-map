@@ -63,9 +63,26 @@ function computeExpiry(issued: string | null): string | null {
 // Certifications that are retired (no longer attainable). Show them but mark as retired.
 const RETIRED_CODES = new Set(["ANS-C01", "MLS-C01"])
 
+function latestBadgeFor(earned: EarnedBadge[], normalizedName: string): EarnedBadge | undefined {
+  return earned
+    .filter((badge) => badge.normalized === normalizedName)
+    .reduce<EarnedBadge | undefined>((latest, badge) => {
+      if (!latest) return badge
+
+      const issuedDate = badge.issuedDate ?? ""
+      const latestIssuedDate = latest.issuedDate ?? ""
+      if (issuedDate !== latestIssuedDate) {
+        return issuedDate > latestIssuedDate ? badge : latest
+      }
+
+      const expiresDate = badge.expiresDate ?? ""
+      return expiresDate > (latest.expiresDate ?? "") ? badge : latest
+    }, undefined)
+}
+
 export function buildMedaglier(earned: EarnedBadge[], now: Date = new Date()): MedalItem[] {
   const items: MedalItem[] = CERTIFICATIONS.map((cert, index) => {
-    const match = earned.find((b) => b.normalized === normalizeName(cert.name))
+    const match = latestBadgeFor(earned, normalizeName(cert.name))
     const issuedDate = match?.issuedDate ?? null
     const expiresDate = match?.expiresDate ?? computeExpiry(issuedDate)
 
