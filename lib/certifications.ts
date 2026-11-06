@@ -129,6 +129,28 @@ export const CERTIFICATIONS: Certification[] = [
     track: "Specialty",
     image: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png",
   },
+  // Retired (April 2024) - names match the Credly badge templates exactly
+  {
+    code: "PAS-C01",
+    name: "AWS Certified: SAP on AWS \u2013 Specialty",
+    tier: "Specialty",
+    track: "Specialty",
+    image: "https://images.credly.com/images/57bb7f6a-441f-4356-a2f1-7693227a475e/image.png",
+  },
+  {
+    code: "DAS-C01",
+    name: "AWS Certified Data Analytics \u2013 Specialty",
+    tier: "Specialty",
+    track: "Specialty",
+    image: "https://images.credly.com/images/6430efe4-0ac0-4df6-8f1b-9559d8fcdf27/image.png",
+  },
+  {
+    code: "DBS-C01",
+    name: "AWS Certified Database \u2013 Specialty",
+    tier: "Specialty",
+    track: "Specialty",
+    image: "https://images.credly.com/images/885d38e4-55c0-4c35-b4ed-694e2b26be6c/image.png",
+  },
 ]
 
 export const TIER_ORDER: Record<CertTier, number> = {
