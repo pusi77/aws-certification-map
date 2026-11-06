@@ -4,15 +4,11 @@ import { CREDLY_USERNAME as CONFIG_CREDLY_USERNAME } from "./config"
 // Re-export for backward compatibility
 export const CREDLY_USERNAME = CONFIG_CREDLY_USERNAME
 
-const ALIASED_BADGE_NAMES: Record<string, { normalized: string; imageUrl: string }> = {
-  [normalizeName("AWS Certified SysOps Administrator – Associate")]: {
-    normalized: normalizeName("AWS Certified CloudOps Administrator – Associate"),
-    imageUrl: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob",
-  },
-  [normalizeName("AWS Certified SysOps Administrator - Associate")]: {
-    normalized: normalizeName("AWS Certified CloudOps Administrator – Associate"),
-    imageUrl: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob",
-  },
+/** Renamed certifications: old Credly badge name -> current certification name. */
+const ALIASED_BADGE_NAMES: Record<string, string> = {
+  [normalizeName("AWS Certified SysOps Administrator – Associate")]: normalizeName(
+    "AWS Certified CloudOps Engineer – Associate",
+  ),
 }
 
 function createEarnedBadgeFromCredly(b: CredlyBadge): EarnedBadge | null {
@@ -25,11 +21,12 @@ function createEarnedBadgeFromCredly(b: CredlyBadge): EarnedBadge | null {
   return {
     badgeId: b.id,
     badgeUrl: `https://www.credly.com/badges/${b.id}`,
-    name: alias ? "AWS Certified CloudOps Administrator – Associate" : name,
-    normalized: alias ? alias.normalized : normalizedName,
+    // Keep the original badge name/image; only the match key follows the rename.
+    name,
+    normalized: alias ?? normalizedName,
     issuedDate: b.issued_at_date ?? null,
     expiresDate: b.expires_at_date ?? null,
-    imageUrl: alias ? alias.imageUrl : b.badge_template?.image_url ?? null,
+    imageUrl: b.badge_template?.image_url ?? null,
   }
 }
 

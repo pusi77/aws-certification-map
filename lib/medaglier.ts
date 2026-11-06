@@ -6,7 +6,10 @@ export type MedalStatus = "active" | "expired" | "missing" | "retired"
 
 export interface MedalItem {
   code: string
+  /** Name shown on the card: the earned badge's own name when it was earned under an older name. */
   name: string
+  /** Current certification name, set only when the earned badge carries an older name (e.g. SysOps -> CloudOps). */
+  renamedTo: string | null
   tier: CertTier
   track: CertTrack
   image: string
@@ -85,6 +88,7 @@ export function buildMedaglier(earned: EarnedBadge[], now: Date = new Date()): M
     const match = latestBadgeFor(earned, normalizeName(cert.name))
     const issuedDate = match?.issuedDate ?? null
     const expiresDate = match?.expiresDate ?? computeExpiry(issuedDate)
+    const renamed = match !== undefined && normalizeName(match.name) !== normalizeName(cert.name)
 
     let status: MedalStatus = "missing"
     if (RETIRED_CODES.has(cert.code)) {
@@ -97,7 +101,8 @@ export function buildMedaglier(earned: EarnedBadge[], now: Date = new Date()): M
 
     return {
       code: cert.code,
-      name: cert.name,
+      name: renamed ? match.name : cert.name,
+      renamedTo: renamed ? cert.name : null,
       tier: cert.tier,
       track: cert.track,
       // Prefer the live Credly image when matched, fall back to the static official URL.

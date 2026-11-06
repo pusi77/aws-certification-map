@@ -122,6 +122,7 @@ export function MedalCard({ item }: { item: MedalItem }) {
 
       {/* Name */}
       <h3 className="text-balance text-sm font-semibold leading-snug text-card-foreground">{item.name}</h3>
+      {item.renamedTo && <p className="mt-1 text-xs text-muted-foreground">Now {item.renamedTo}</p>}
 
       {/* Status detail */}
       <div className="mt-2 space-y-0.5 text-xs">
