@@ -4,6 +4,7 @@ import { HoloBadge } from "./holo-badge"
 
 const TIER_STYLES: Record<MedalItem["tier"], string> = {
   Foundational: "text-muted-foreground border-border",
+  Business: "text-muted-foreground border-border",
   Associate: "text-cyan border-cyan/40",
   Professional: "text-gold border-gold/40",
   Specialty: "text-violet border-violet/40",

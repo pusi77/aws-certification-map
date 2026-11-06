@@ -61,7 +61,7 @@ function computeExpiry(issued: string | null): string | null {
  * Returns items sorted: active (most recent first), then expired, then missing.
  */
 // Certifications that are retired (no longer attainable). Show them but mark as retired.
-const RETIRED_CODES = new Set(["ANS-C01", "MLS-C01"])
+const RETIRED_CODES = new Set(["MLS-C01"])
 
 function latestBadgeFor(earned: EarnedBadge[], normalizedName: string): EarnedBadge | undefined {
   return earned

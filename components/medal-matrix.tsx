@@ -80,7 +80,7 @@ function levelItems(items: MedalItem[], level: string) {
 }
 
 export function MedalMatrix({ items }: { items: MedalItem[] }) {
-  const foundational = items.filter((i) => i.tier === "Foundational")
+  const foundational = items.filter((i) => i.tier === "Foundational" || i.tier === "Business")
   // Exclude retired certs from the visible Specialty panel (they appear in Retired section)
   const specialty = items.filter((i) => i.tier === "Specialty" && i.status !== "retired")
   const retired = items.filter((i) => i.status === "retired")
@@ -195,7 +195,7 @@ export function MedalMatrix({ items }: { items: MedalItem[] }) {
             {foundational.length > 0 && (
               <div className="xl:col-span-2">
                 <h2 className={`mb-5 text-sm font-semibold uppercase tracking-widest ${LEVEL_ACCENT.Foundational}`}>
-                  Foundational
+                  Foundational &amp; Business
                 </h2>
                 <div className="rounded-2xl border border-border bg-muted/20 p-4">
                   <ul

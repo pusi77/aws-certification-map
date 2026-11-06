@@ -1,10 +1,10 @@
 // Official, currently-active AWS certifications.
 // Image URLs are the official AWS badge template images hosted on Credly's CDN.
 
-export type CertTier = "Foundational" | "Associate" | "Professional" | "Specialty"
+export type CertTier = "Foundational" | "Business" | "Associate" | "Professional" | "Specialty"
 
 /** Role-based track (the columns of the AWS certification chart). */
-export type CertTrack = "Architect" | "Operations" | "Developer" | "Data & AI" | "Foundational" | "Specialty"
+export type CertTrack = "Architect" | "Operations" | "Developer" | "Data & AI" | "Foundational" | "Business" | "Specialty"
 
 export interface Certification {
   /** Exam code, used as a stable local id */
@@ -41,6 +41,14 @@ export const CERTIFICATIONS: Certification[] = [
     track: "Foundational",
     image: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png",
   },
+  // Business
+  {
+    code: "AIB-C01",
+    name: "AWS Certified AI Business Strategist",
+    tier: "Business",
+    track: "Business",
+    image: "https://images.credly.com/images/ed8c832e-b100-4ab8-8864-2fddb2e87b04/blob",
+  },
   // Associate
   {
     code: "SAA-C03",
@@ -51,7 +59,7 @@ export const CERTIFICATIONS: Certification[] = [
   },
   {
     code: "SOA-C02",
-    name: "AWS Certified CloudOps Administrator \u2013 Associate",
+    name: "AWS Certified CloudOps Engineer \u2013 Associate",
     tier: "Associate",
     track: "Operations",
     image: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob",
@@ -125,9 +133,10 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const TIER_ORDER: Record<CertTier, number> = {
   Foundational: 0,
-  Associate: 1,
-  Professional: 2,
-  Specialty: 3,
+  Business: 1,
+  Associate: 2,
+  Professional: 3,
+  Specialty: 4,
 }
 
 /** Normalize a certification name for tolerant matching (handles dashes/spaces/case). */
